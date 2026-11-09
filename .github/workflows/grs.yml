@@ -1,0 +1,63 @@
+name: Update README cards
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+  # Gera os cards logo que este arquivo é criado ou alterado.
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/grs.yml
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      # Sem isto, a Action usaria o token padrão e geraria só dados públicos, sem avisar.
+      - name: Check token
+        env:
+          STATS_TOKEN: ${{ secrets.STATS_TOKEN }}
+        run: |
+          if [ -z "$STATS_TOKEN" ]; then
+            echo "::error::Secret STATS_TOKEN não configurado."
+            exit 1
+          fi
+
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      # A Action e o core_version ficam fixos porque esse código recebe o seu token.
+      # fail_on_error mantém o último card bom se a geração falhar.
+      - name: Generate stats card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: stats
+          options: username=${{ github.repository_owner }}&show_icons=true&theme=dark&include_all_commits=true
+          path: profile/stats.svg
+          token: ${{ secrets.STATS_TOKEN }}
+          core_version: "2.2.0"
+          fail_on_error: "true"
+
+      - name: Generate top languages card
+        uses: stats-organization/github-readme-stats-action@2c498845f71017821efaad14293ebc736156ef21 # v2.1.0
+        with:
+          card: top-langs
+          options: username=${{ github.repository_owner }}&layout=compact&langs_count=7&theme=dark
+          path: profile/top-langs.svg
+          token: ${{ secrets.STATS_TOKEN }}
+          core_version: "2.2.0"
+          fail_on_error: "true"
+
+      - name: Commit cards
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/*.svg
+          git commit -m "Update README cards" || exit 0
+          git push
