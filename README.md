@@ -10,13 +10,11 @@
 </p>
 
 <p align="center">
-  Desenvolvo apps iOS e Android com React Native e Expo e interfaces web com React e Next.js,<br>
-  usando TypeScript. No backend, trabalho com Node.js e Firebase.
+  Desenvolvo apps iOS e Android com React Native e Expo e interfaces web com React e Next.js, usando TypeScript. No backend, trabalho com Node.js e Firebase.
 </p>
 
 <p align="center">
-  Desde 2022, são <strong>+2000 commits</strong>, a maior parte em repositórios privados no GitLab,<br>
-  que não aparecem nas estatísticas públicas do GitHub.
+  Desde 2022, são <strong>+2000 commits</strong>, a maior parte em repositórios privados no GitLab, que não aparecem nas estatísticas públicas do GitHub.
 </p>
 
 <h3 align="center">Habilidades</h3>
