@@ -9,7 +9,7 @@
         aria-labelledby="descId"
       >
         <title id="titleId">Estat&#237;sticas do GitHub de Vin&#237;cius Freitas, Rank: C</title>
-        <desc id="descId">Total de estrelas: 1, Total de Commits  : 470, Total de PRs: 3</desc>
+        <desc id="descId">Total de estrelas: 1, Total de Commits  : 473, Total de PRs: 3</desc>
         <style>
           .header {
             font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif;
@@ -73,7 +73,7 @@
         stroke-dashoffset: 251.32741228718345;
       }
       to {
-        stroke-dashoffset: 231.98826039366787;
+        stroke-dashoffset: 231.92544012920723;
       }
     }
   
@@ -173,7 +173,7 @@
         x="224.01"
         y="12.5"
         data-testid="commits"
-      >470</text>
+      >473</text>
     </g>
   </g><g transform="translate(0, 50)">
     <g class="stagger" style="animation-delay: 750ms" transform="translate(25, 0)">
